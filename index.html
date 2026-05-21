@@ -14,7 +14,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
   <link rel="manifest" href="/favicon/site.webmanifest">
   <link rel="shortcut icon" href="/favicon/favicon.ico">
-  <meta name="theme-color" content="#0f172a">
+
+  <!-- Prevent flash: apply saved theme before render -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme') || 'light';
+      if (saved === 'dark') document.documentElement.classList.add('dark');
+    })();
+  </script>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,20 +33,13 @@
 
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'sans-serif'] },
           animation: {
             'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'spin-slow': 'spin 20s linear infinite',
           },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-20px)' },
-            }
-          }
         }
       }
     }
@@ -48,81 +48,123 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
 
-    .gradient-bg {
+    /* --- Backgrounds --- */
+    .theme-bg {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 40%, #f5f7ff 100%);
+    }
+    .dark .theme-bg {
       background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%);
     }
 
-    .glow-ring {
-      box-shadow: 0 0 60px rgba(99, 102, 241, 0.3), 0 0 120px rgba(99, 102, 241, 0.1);
+    /* --- Dot grid --- */
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(99,102,241,0.18) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .dark .dot-grid {
+      background-image: radial-gradient(circle, rgba(99,102,241,0.15) 1px, transparent 1px);
     }
 
+    /* --- Glow ring --- */
+    .glow-ring {
+      box-shadow: 0 0 60px rgba(99,102,241,0.2), 0 0 120px rgba(99,102,241,0.08);
+    }
+    .dark .glow-ring {
+      box-shadow: 0 0 60px rgba(99,102,241,0.3), 0 0 120px rgba(99,102,241,0.1);
+    }
+
+    /* --- Text gradient --- */
     .text-gradient {
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #0ea5e9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dark .text-gradient {
       background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
+    /* --- Cards --- */
     .card-blur {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255,255,255,0.75);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(99,102,241,0.15);
+    }
+    .dark .card-blur {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
+    /* --- Progress bar --- */
     .progress-bar {
-      background: linear-gradient(90deg, #818cf8, #c084fc, #38bdf8);
+      background: linear-gradient(90deg, #6366f1, #a855f7, #0ea5e9);
       background-size: 200% 100%;
       animation: shimmer 2s linear infinite;
     }
-
     @keyframes shimmer {
-      0% { background-position: 200% 0; }
+      0%   { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
 
-    .dot-grid {
-      background-image: radial-gradient(circle, rgba(99,102,241,0.15) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-
-    .gear {
-      animation: spin 12s linear infinite;
-      transform-origin: center;
-    }
-    .gear-reverse {
-      animation: spin 8s linear infinite reverse;
-      transform-origin: center;
-    }
-
+    /* --- Gear animations --- */
+    .gear         { animation: spin 12s linear infinite; transform-origin: center; }
+    .gear-reverse { animation: spin 8s linear infinite reverse; transform-origin: center; }
     @keyframes spin {
       from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      to   { transform: rotate(360deg); }
     }
 
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-    }
-    .fade-in-delay-1 { animation-delay: 0.3s; }
-    .fade-in-delay-2 { animation-delay: 0.6s; }
-    .fade-in-delay-3 { animation-delay: 0.9s; }
-    .fade-in-delay-4 { animation-delay: 1.2s; }
+    /* --- Fade-in --- */
+    .fade-in              { opacity: 0; animation: fadeIn 1s ease forwards; }
+    .fade-in-delay-1      { animation-delay: 0.3s; }
+    .fade-in-delay-2      { animation-delay: 0.6s; }
+    .fade-in-delay-3      { animation-delay: 0.9s; }
+    .fade-in-delay-4      { animation-delay: 1.2s; }
+    @keyframes fadeIn { to { opacity: 1; } }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    /* --- Theme toggle button --- */
+    .toggle-btn {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(99,102,241,0.2);
+    }
+    .dark .toggle-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
     }
   </style>
 </head>
 
-<body class="gradient-bg min-h-screen text-white overflow-x-hidden">
+<body class="theme-bg min-h-screen text-slate-900 dark:text-white overflow-x-hidden transition-colors duration-300">
 
   <!-- Dot grid background -->
   <div class="fixed inset-0 dot-grid pointer-events-none"></div>
 
   <!-- Decorative blobs -->
-  <div class="fixed top-0 left-0 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl opacity-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-  <div class="fixed bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl opacity-10 translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
-  <div class="fixed top-1/2 left-1/4 w-64 h-64 bg-sky-600 rounded-full filter blur-3xl opacity-5 pointer-events-none animate-pulse-slow"></div>
+  <div class="fixed top-0 left-0 w-96 h-96 bg-indigo-400 dark:bg-indigo-600 rounded-full filter blur-3xl opacity-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+  <div class="fixed bottom-0 right-0 w-96 h-96 bg-purple-400 dark:bg-purple-600 rounded-full filter blur-3xl opacity-10 translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+  <div class="fixed top-1/2 left-1/4 w-64 h-64 bg-sky-400 dark:bg-sky-600 rounded-full filter blur-3xl opacity-5 pointer-events-none animate-pulse-slow"></div>
+
+  <!-- Theme toggle button -->
+  <button
+    id="theme-toggle"
+    onclick="toggleTheme()"
+    aria-label="Vaihda teema"
+    class="toggle-btn fixed top-5 right-5 z-50 w-10 h-10 rounded-full flex items-center justify-center backdrop-filter backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-sm">
+    <!-- Sun icon (visible in dark mode) -->
+    <svg id="sun-icon" class="hidden w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"/>
+      <path stroke-linecap="round" d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-width="2"/>
+    </svg>
+    <!-- Moon icon (visible in light mode) -->
+    <svg id="moon-icon" class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+  </button>
 
   <!-- Main content -->
   <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-16">
@@ -130,30 +172,26 @@
     <!-- Logos -->
     <div class="fade-in mb-10 flex items-center gap-6">
       <img src="./images/digimuuntamo_logo2.png" alt="Digimuuntamo logo" class="h-16 drop-shadow-lg">
-      <div class="w-px h-10 bg-white/20 rounded-full"></div>
+      <div class="w-px h-10 bg-slate-300 dark:bg-white/20 rounded-full"></div>
       <img src="./images/kasvu-logo.png" alt="KasvuEsedu logo" class="h-20 drop-shadow-lg">
     </div>
 
     <!-- Gear animation -->
     <div class="fade-in fade-in-delay-1 relative flex items-center justify-center w-40 h-40 mb-10">
-      <!-- Outer ring -->
-      <div class="absolute inset-0 rounded-full border-2 border-indigo-500/30 glow-ring"></div>
-      <!-- Spinning dashed ring -->
-      <svg class="absolute inset-0 w-full h-full gear" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="absolute inset-0 rounded-full border-2 border-indigo-400/30 dark:border-indigo-500/30 glow-ring"></div>
+      <svg class="absolute inset-0 w-full h-full gear" viewBox="0 0 160 160" fill="none">
         <circle cx="80" cy="80" r="70" stroke="url(#grad1)" stroke-width="2" stroke-dasharray="10 8" stroke-linecap="round"/>
         <defs>
           <linearGradient id="grad1" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#818cf8"/>
-            <stop offset="50%" stop-color="#c084fc"/>
-            <stop offset="100%" stop-color="#38bdf8"/>
+            <stop offset="0%" stop-color="#6366f1"/>
+            <stop offset="50%" stop-color="#a855f7"/>
+            <stop offset="100%" stop-color="#0ea5e9"/>
           </linearGradient>
         </defs>
       </svg>
-      <!-- Counter-spinning inner ring -->
-      <svg class="absolute w-24 h-24 gear-reverse" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="48" cy="48" r="40" stroke="rgba(129,140,248,0.4)" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <svg class="absolute w-24 h-24 gear-reverse" viewBox="0 0 96 96" fill="none">
+        <circle cx="48" cy="48" r="40" stroke="rgba(99,102,241,0.35)" stroke-width="1.5" stroke-dasharray="6 6"/>
       </svg>
-      <!-- Center icon -->
       <div class="relative w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -168,21 +206,21 @@
       <h1 class="text-5xl sm:text-6xl font-black tracking-tight mb-4">
         <span class="text-gradient">Sivusto uudistuu</span>
       </h1>
-      <p class="text-xl text-slate-300 font-light leading-relaxed mb-2">
+      <p class="text-xl text-slate-600 dark:text-slate-300 font-light leading-relaxed mb-2">
         Rakennamme Digimuuntamon verkkosivuja uuteen uskoon.
       </p>
-      <p class="text-slate-400 text-base">
+      <p class="text-slate-500 dark:text-slate-400 text-base">
         Palataan pian parempana — odota hyvää!
       </p>
     </div>
 
     <!-- Progress bar -->
     <div class="fade-in fade-in-delay-3 w-full max-w-md mt-10">
-      <div class="flex justify-between text-xs text-slate-500 mb-2">
+      <div class="flex justify-between text-xs text-slate-400 dark:text-slate-500 mb-2">
         <span>Kehitys käynnissä</span>
-        <span class="text-indigo-400 font-semibold">Tulossa pian</span>
+        <span class="text-indigo-500 dark:text-indigo-400 font-semibold">Tulossa pian</span>
       </div>
-      <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+      <div class="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
         <div class="progress-bar h-full rounded-full" style="width: 65%"></div>
       </div>
     </div>
@@ -190,51 +228,58 @@
     <!-- Info cards -->
     <div class="fade-in fade-in-delay-4 grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 w-full max-w-2xl">
       <div class="card-blur rounded-2xl p-5 text-center">
-        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center mx-auto mb-3">
-          <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-500/20 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-indigo-500 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
         </div>
-        <h3 class="text-sm font-semibold text-white mb-1">Uusi ilme</h3>
-        <p class="text-xs text-slate-400">Modernit sivut rakennetaan alusta asti uudelleen</p>
+        <h3 class="text-sm font-semibold text-slate-800 dark:text-white mb-1">Uusi ilme</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Modernit sivut rakennetaan alusta asti uudelleen</p>
       </div>
       <div class="card-blur rounded-2xl p-5 text-center">
-        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center mx-auto mb-3">
-          <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/20 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-purple-500 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
           </svg>
         </div>
-        <h3 class="text-sm font-semibold text-white mb-1">Parempi kokemus</h3>
-        <p class="text-xs text-slate-400">Nopeampi, selkeämpi ja helpompi käyttää</p>
+        <h3 class="text-sm font-semibold text-slate-800 dark:text-white mb-1">Parempi kokemus</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Nopeampi, selkeämpi ja helpompi käyttää</p>
       </div>
       <div class="card-blur rounded-2xl p-5 text-center">
-        <div class="w-10 h-10 rounded-xl bg-sky-500/20 flex items-center justify-center mx-auto mb-3">
-          <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-500/20 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-sky-500 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
         </div>
-        <h3 class="text-sm font-semibold text-white mb-1">Sama tiimi</h3>
-        <p class="text-xs text-slate-400">Osaavat opettajat ja opiskelijat tekevät työtä</p>
+        <h3 class="text-sm font-semibold text-slate-800 dark:text-white mb-1">Sama tiimi</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Osaavat opettajat ja opiskelijat tekevät työtä</p>
       </div>
     </div>
 
     <!-- Contact -->
     <div class="fade-in fade-in-delay-4 mt-12 text-center">
-      <p class="text-slate-500 text-sm mb-3">Kysy lisää koulutuksesta:</p>
-      <a href="mailto:teija.pylkkanen@esedu.fi"
-         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full card-blur text-sm text-slate-300 hover:text-white hover:border-indigo-400/40 transition-all duration-300 border border-transparent">
-        <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <p class="text-slate-400 dark:text-slate-500 text-sm mb-3">Kysy lisää koulutuksesta:</p>
+      <a href="mailto:tuomas.puro@esedu.fi"
+         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full card-blur text-sm text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-white transition-all duration-300">
+        <svg class="w-4 h-4 text-indigo-500 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
         </svg>
-        teija.pylkkanen@esedu.fi
+        tuomas.puro@esedu.fi
       </a>
     </div>
 
     <!-- Social links -->
     <div class="fade-in fade-in-delay-4 flex gap-4 mt-6">
+      <a href="https://www.facebook.com/digimuuntamo" target="_blank" rel="noopener"
+         aria-label="Facebook"
+         class="w-10 h-10 rounded-full card-blur flex items-center justify-center text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+        </svg>
+      </a>
       <a href="https://www.instagram.com/digimuuntamo/" target="_blank" rel="noopener"
          aria-label="Instagram"
-         class="w-10 h-10 rounded-full card-blur flex items-center justify-center text-slate-400 hover:text-purple-400 transition-colors duration-300">
+         class="w-10 h-10 rounded-full card-blur flex items-center justify-center text-slate-400 hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-300">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
           <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
@@ -247,10 +292,26 @@
 
   <!-- Footer -->
   <footer class="relative z-10 text-center pb-8">
-    <p class="text-slate-600 text-xs">
+    <p class="text-slate-400 dark:text-slate-600 text-xs">
       &copy; 2025 KasvuEsedu · Digimuuntamo · Mikkeli
     </p>
   </footer>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateIcons(isDark);
+    }
+
+    function updateIcons(isDark) {
+      document.getElementById('sun-icon').classList.toggle('hidden', !isDark);
+      document.getElementById('moon-icon').classList.toggle('hidden', isDark);
+    }
+
+    // Sync icons with current theme on load
+    updateIcons(document.documentElement.classList.contains('dark'));
+  </script>
 
 </body>
 </html>
