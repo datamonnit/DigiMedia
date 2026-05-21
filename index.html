@@ -1,941 +1,261 @@
-<!DOCTYPE HTML>
-<!--
-	Justice by freehtml5.co
-	Twitter: http://twitter.com/fh5co
-	URL: http://freehtml5.co
--->
-<html>
-
+<!DOCTYPE html>
+<html lang="fi">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Digimuuntamo</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Digimuuntamo" />
-	<meta name="keywords" content="digimuuntamo, koulutus, työvoimakoulutus, esedu, kasvuesedu" />
-	<meta name="author" content="Digimuuntamo" />
-	<html lang="fi">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digimuuntamo – Sivusto uudistuu</title>
+  <meta name="description" content="Digimuuntamo – Sivusto on uudistumassa. Tulossa pian!" />
+  <meta name="keywords" content="digimuuntamo, koulutus, työvoimakoulutus, esedu, kasvuesedu" />
+  <meta name="author" content="Digimuuntamo" />
 
-	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-	<link rel="manifest" href="/favicon/site.webmanifest">
-	<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="shortcut icon" href="/favicon/favicon.ico">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="msapplication-config" content="/favicon/browserconfig.xml">
-	<meta name="theme-color" content="#ffffff">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon/favicon.ico">
+  <meta name="theme-color" content="#0f172a">
 
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
-	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content="" />
-	<meta property="og:image" content="" />
-	<meta property="og:url" content="" />
-	<meta property="og:site_name" content="" />
-	<meta property="og:description" content="" />
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'spin-slow': 'spin 20s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
 
-	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400, 900" rel="stylesheet"> -->
+  <style>
+    body { font-family: 'Inter', sans-serif; }
 
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Themify Icons-->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<!-- Flexslider -->
-	<!-- <link rel="stylesheet" href="css/flexslider.css"> -->
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/custom.css">
-	<link rel="stylesheet" href="css/karuselli.css">
-	<!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-	<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400&display=swap"
-		rel="stylesheet">
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    .gradient-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%);
+    }
 
+    .glow-ring {
+      box-shadow: 0 0 60px rgba(99, 102, 241, 0.3), 0 0 120px rgba(99, 102, 241, 0.1);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-blur {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .progress-bar {
+      background: linear-gradient(90deg, #818cf8, #c084fc, #38bdf8);
+      background-size: 200% 100%;
+      animation: shimmer 2s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(99,102,241,0.15) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .gear {
+      animation: spin 12s linear infinite;
+      transform-origin: center;
+    }
+    .gear-reverse {
+      animation: spin 8s linear infinite reverse;
+      transform-origin: center;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    .fade-in-delay-1 { animation-delay: 0.3s; }
+    .fade-in-delay-2 { animation-delay: 0.6s; }
+    .fade-in-delay-3 { animation-delay: 0.9s; }
+    .fade-in-delay-4 { animation-delay: 1.2s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 
-<body>
+<body class="gradient-bg min-h-screen text-white overflow-x-hidden">
 
-	<div class="gtco-loader"></div>
-	<div id="page">
-		<nav class="gtco-nav" role="navigation">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-2 col-xs-12">
-						<div id="gtco-logo"><img src="./images/digimuuntamo_logo2.png" alt="LogoDigimuuntamo"></div>
-					</div>
-					<div class="col-xs-10 text-right menu-1 main-nav">
-						<ul>
-							<li class="active"><a href="#" data-nav-section="home">Etusivu</a></li>
-							<li><a href="#" data-nav-section="about">Tervetuloa</a></li>
-							<li><a href="#" data-nav-section="kohderyhma">Koulutus</a></li>
-							<!-- <li><a href="#" data-nav-section="koulutukset">Koulutukset</a></li> -->
-							<li><a href="#" data-nav-section="our-team">Opettajat</a></li>
-							<li><a href="#" data-nav-section="some">Projekteja</a></li>
-							<li><a href="https://www.facebook.com/digimuuntamo" target="_blank" class="external"
-									aria-label="facebook"><i class="icon-facebook"></i></a></li>
-							<li><a href="https://www.instagram.com/digimuuntamo/" target="_blank" class="external"
-									aria-label="instagram"><i class="icon-instagram"></i></a></li>
-							<!-- <li><a href="#" aria-label="linkedin"><i class="icon-linkedin"></i></a></li> -->
+  <!-- Dot grid background -->
+  <div class="fixed inset-0 dot-grid pointer-events-none"></div>
 
-							<!-- <li class="btn-cta"><a href="#" data-nav-section="contact"><span>Contact</span></a></li> -->
-							<!-- For external page link -->
-							<!-- <li><a href="http://freehtml5.co/" class="external">External</a></li> -->
-						</ul>
-					</div>
-				</div>
+  <!-- Decorative blobs -->
+  <div class="fixed top-0 left-0 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl opacity-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+  <div class="fixed bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl opacity-10 translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
+  <div class="fixed top-1/2 left-1/4 w-64 h-64 bg-sky-600 rounded-full filter blur-3xl opacity-5 pointer-events-none animate-pulse-slow"></div>
 
-			</div>
-		</nav>
+  <!-- Main content -->
+  <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-16">
 
-		<section id="gtco-hero" class="gtco-cover" style="background-image: url(images/alkukuva.jpg);"
-			data-section="home" data-stellar-background-ratio="0.5" opacity="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-md-offset-0 text-center">
-						<div class="display-t">
-							<div class="display-tc">
-								<h1 class="animate-box" data-animate-effect="fadeIn">DIGIMUUNTAMO</h1>
-								<h2 class="animate-box" data-animate-effect="fadeIn">KOODAA URASI UUTEEN KASVUUN</h2>
-								<p class="gtco-video-link animate-box" data-animate-effect="fadeIn"><a
-										href="https://www.youtube.com/watch?v=38nYhaEJDho" class="popup-vimeo"
-										alt="Video esittely" aria-label="Video esittely"><i
-											class="icon-controller-play"></i></a></p>
-								<h2 class="animate-box" data-animate-effect="fadeIn">Katso esittelyvideo koulutuksesta
-								</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Logo -->
+    <div class="fade-in mb-10">
+      <img src="./images/digimuuntamo_logo2.png" alt="Digimuuntamo logo" class="h-16 mx-auto drop-shadow-lg">
+    </div>
 
-		<section id="gtco-about" data-section="about">
-			<div class="container">
-				<div class="row row-pb-md">
-					<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-						<h2>TERVETULOA MUKAVAAN OPPIMISYMPÄRISTÖÖN</h2><br>
-						<p class="sub">Tule mukaan uudenlaiseen oppimisympäristöön, pääset oppimaan kokeilemalla ja
-							tekemällä. Digimuuntamo tarjoaa sinulle mukavan ympäristön oppia laaja-alaisesti digialan
-							taitoja aina verkkosivujen teosta kuvankäsittelyyn. Pohjana sinulla voi toimia aikaisempi
-							ammattisi, työkokemuksesi tai harrastuneisuutesi. Pääset syventämään koodaustaitojasi Esedun
-							osaavien opettajien opetuksen ja oikeiden koodausprojektien kautta. Et välttämättä tarvitse
-							aikaisempaa kokemusta koodaamisesta, motivaatio ja halu kokeilla uutta riittävät. Asetamme
-							yhdessä sinua
-							palvelevat tavoitteet ja saavutetaan hyvät perustaidot. Digimuuntamosta voit laajentaa
-							digiosaamistasi, jotka ovat työelämässä kovaa valuuttaa.<br><br>
-							Hyppää mukaan, autamme sinua löytymään vahvuutesi!</p>
-						<p class="subtle-text animate-box" data-animate-effect="fadeIn">HTML</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section id="gtco-kohderyhma" data-section="kohderyhma">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
-						<img alt="Kohderyhmä" src="images/kohderyhma.jpg" width="100%" class="center" />
+    <!-- Gear animation -->
+    <div class="fade-in fade-in-delay-1 relative flex items-center justify-center w-40 h-40 mb-10">
+      <!-- Outer ring -->
+      <div class="absolute inset-0 rounded-full border-2 border-indigo-500/30 glow-ring"></div>
+      <!-- Spinning dashed ring -->
+      <svg class="absolute inset-0 w-full h-full gear" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="80" r="70" stroke="url(#grad1)" stroke-width="2" stroke-dasharray="10 8" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#818cf8"/>
+            <stop offset="50%" stop-color="#c084fc"/>
+            <stop offset="100%" stop-color="#38bdf8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <!-- Counter-spinning inner ring -->
+      <svg class="absolute w-24 h-24 gear-reverse" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="48" cy="48" r="40" stroke="rgba(129,140,248,0.4)" stroke-width="1.5" stroke-dasharray="6 6"/>
+      </svg>
+      <!-- Center icon -->
+      <div class="relative w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+      </div>
+    </div>
 
-						<h3 class="text-center heading-colored">
-							<br>KOHDERYHMÄ
-						</h3>
+    <!-- Heading -->
+    <div class="fade-in fade-in-delay-2 text-center max-w-2xl">
+      <h1 class="text-5xl sm:text-6xl font-black tracking-tight mb-4">
+        <span class="text-gradient">Sivusto uudistuu</span>
+      </h1>
+      <p class="text-xl text-slate-300 font-light leading-relaxed mb-2">
+        Rakennamme Digimuuntamon verkkosivuja uuteen uskoon.
+      </p>
+      <p class="text-slate-400 text-base">
+        Palataan pian parempana — odota hyvää!
+      </p>
+    </div>
 
-						<p>
-							Koulutus on tarkoitettu työttömille työnhakijoille ja työttömyysuhan alla oleville, jotka
-							haluavat kokeilla rohkeasti laaja-alaisesti digialaa, koodaamisesta sisällöntuontoon.
-							Tavoitteena on löytää uusia työllistymisen tai yrittäjyyden mahdollisuuksia digiosaamista
-							kehittämällä. Oppiminen on hauskaa ja opettavaista projektimuotoisesti. Aikaisempaa
-							kokemusta esim. koodaamisesta ei tarvita, osaat käyttää tietokonetta ja motivaatio
-							riittävät, sekä pidät yhdessä tekemisestä.
-						</p>
-						<!-- <p>
-							Tavoitteena löytää uusia työllistymisen tai yrittäjyyden mahdollisuuksia digiosaamista
-							kehittämällä Oppiminen tapahtuu tiimeissä ja ohjatusti kisällimallilla Jokaiselle tehdään
-							oma henkilökohtainen suunnitelma
-						</p>
-						<p>
-							Tämä koulutus on osa isompaa jatkumoa. 2.0 ja 3.0 koulutuksissa on mahdollista painottaa
-							joko koodaamista tai sisällöntuotantoa.
-						</p> -->
+    <!-- Progress bar -->
+    <div class="fade-in fade-in-delay-3 w-full max-w-md mt-10">
+      <div class="flex justify-between text-xs text-slate-500 mb-2">
+        <span>Kehitys käynnissä</span>
+        <span class="text-indigo-400 font-semibold">Tulossa pian</span>
+      </div>
+      <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+        <div class="progress-bar h-full rounded-full" style="width: 65%"></div>
+      </div>
+    </div>
 
-					</div>
-					<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
-						<img alt="Koulutuksen sisältö" src="images/sisalto.jpg" width="100%" class="center" />
+    <!-- Info cards -->
+    <div class="fade-in fade-in-delay-4 grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 w-full max-w-2xl">
+      <div class="card-blur rounded-2xl p-5 text-center">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-sm font-semibold text-white mb-1">Uusi ilme</h3>
+        <p class="text-xs text-slate-400">Modernit sivut rakennetaan alusta asti uudelleen</p>
+      </div>
+      <div class="card-blur rounded-2xl p-5 text-center">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-sm font-semibold text-white mb-1">Parempi kokemus</h3>
+        <p class="text-xs text-slate-400">Nopeampi, selkeämpi ja helpompi käyttää</p>
+      </div>
+      <div class="card-blur rounded-2xl p-5 text-center">
+        <div class="w-10 h-10 rounded-xl bg-sky-500/20 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-sm font-semibold text-white mb-1">Sama tiimi</h3>
+        <p class="text-xs text-slate-400">Osaavat opettajat ja opiskelijat tekevät työtä</p>
+      </div>
+    </div>
 
-						<h3 class="text-center heading-colored">
-							<br>KOULUTUKSEN SISÄLTÖ
-						</h3>
+    <!-- Contact -->
+    <div class="fade-in fade-in-delay-4 mt-12 text-center">
+      <p class="text-slate-500 text-sm mb-3">Kysy lisää koulutuksesta:</p>
+      <a href="mailto:tuomas.puro@esedu.fi"
+         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full card-blur text-sm text-slate-300 hover:text-white hover:border-indigo-400/40 transition-all duration-300 border border-transparent">
+        <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        tuomas.puro@esedu.fi
+      </a>
+    </div>
 
-						<p>
-							Koulutuksessa tutustutaan laaja-alaisesti digialan eri osa-alueisiin. Uudenlaisessa
-							oppimisympäristössä oppimispajoissa tutustutaan mm. ohjelmoinnin perusteisiin, verkkosivujen
-							toteutukseen, sisällöntuotantoon, kuvankäsittelyyn, videoeditointiin ja tekstintuotantoon.
-							Koulutus muotoutuu jo oppimasi ja halukkuuden mukaan. Jokaiselle luodaan oma
-							henkilökohtainen suunnitelma kiinnostuksen ja halukkuuden mukaan.
-						</p>
+    <!-- Social links -->
+    <div class="fade-in fade-in-delay-4 flex gap-4 mt-6">
+      <a href="https://www.facebook.com/digimuuntamo" target="_blank" rel="noopener"
+         aria-label="Facebook"
+         class="w-10 h-10 rounded-full card-blur flex items-center justify-center text-slate-400 hover:text-indigo-400 transition-colors duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/digimuuntamo/" target="_blank" rel="noopener"
+         aria-label="Instagram"
+         class="w-10 h-10 rounded-full card-blur flex items-center justify-center text-slate-400 hover:text-purple-400 transition-colors duration-300">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+    </div>
 
-					</div>
-					<div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
-						<img alt="Livenä ja etänä" src="images/etänä5.jpg" width="100%" class="center" />
+  </main>
 
-						<h3 class="text-center heading-colored">
-							<br> LIVENÄ &amp; ETÄNÄ
-						</h3>
+  <!-- Footer -->
+  <footer class="relative z-10 text-center pb-8">
+    <p class="text-slate-600 text-xs">
+      &copy; 2025 KasvuEsedu · Digimuuntamo · Mikkeli
+    </p>
+  </footer>
 
-						<p>
-							<span>Koulutus toteutetaan lähiopintoina ja tiimeissä tapahtuvana projektioppimisena etänä.
-								Voit siis opiskella siellä missä se on sinulle mukavinta ja helpointa. Digimuuntamo
-								-koulutuksen tukikohtana toimii Esedun Otavankadun yksikön e-sport tila Mikkelissä.
-								E-sport luokassa on erinomaiset puitteet ja käytössäsi on tarvittavat työkalut kaikelle
-								oppimiselle. Tiimit oppivat yhdessä tekemällä ja kokeilemalla.
-								Tule mukaan ja innostu yhdessä tiimisi kanssa!</span>
-						</p>
-
-					</div>
-				</div>
-			</div>
-			<!-- <div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
-						<div class="img-shadow">
-							<img src="images/koodi.jpg" alt="Kuvitus kuva" width="100%">
-						</div>
-					</div>
-
-					<div id="kohderyhma" class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-						<h2 class="heading-colored">Kohderyhmä</h2>
-						<p>Koulutus on tarkoitettu työttömille työnhakijoille, jotka haluavat kokeilla rohkeasti
-							koodaamisen perusteita, sisällöntuotantoa ja projektimaista tiimityötä.</p>
-						Tavoitteena löytää uusia työllistymisen tai yrittäjyyden mahdollisuuksia digiosaamista
-						kehittämällä
-						Oppiminen tapahtuu tiimeissä ja ohjatusti kisällimallilla
-						Jokaiselle tehdään oma henkilökohtainen suunnitelma<br>
-						<p>Tämä koulutus on osa isompaa jatkumoa. 2.0 ja 3.0 koulutuksissa on mahdollista painottaa joko
-							koodaamista tai sisällöntuotantoa.</p>
-					</div>
-				</div>
-
-				<div class="row row-pb-md">
-					<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-						<h1>Livenä ja etänä</h1><br>
-						<ul class="list-unstyled">
-							<li>DigiMuuntamon tukikohtana toimii Otavankadun yksikön e-sports tila Mikkelissä</li>
-							<li>Tiimit osallistuvat oppimispajoihin, joissa opitaan uutta</li>
-							<li>Tiimit oppivat yhdessä tekemällä - yhteistyötä tehdään myös etänä verkossa</li>
-						</ul>
-					</div>
-				</div> -->
-
-
-
-			<div id="koulutukset" data-section="koulutukset">
-
-				<div class="heading">
-					<p class="sub"></p>
-				</div>
-				<div class="row row-pb-md">
-					<div class="col-md-12 col-md-offset-0 heading animate-box" data-animate-effect="fadeIn">
-						<img alt="Koulutusjakso portaat" src="images/Diagram_3.png" width="100%" class="center" />
-						<!-- <h1>KOULUTUSJAKSOT</h1><br>
-							<h3>DigiMuuntamo 1.0</h3>
-							<p>Kesto 8 viikkoa<br>Rohkeasti kokeilemaan koodaamista, sisällöntuotantoa ja projektimaista
-								tiimityötä.</p>
-							<h3>DigiMuuntamo 2.0</h3>
-							<p>Kesto 12 viikkoa<br> Aitoja työelämäprojekteja projektitiimeissä, oman kiinnostuksen
-								mukaisen
-								osaamisen syventämistä, uuden oppimista ja rohkeita kokeiluja.</p>
-							<h3>DigiMuuntamo 3.0</h3>
-							<p>Kesto 12 Viikkoa<br>Projektimuotoista tiimityöskentelyä, työelämäjakso, oman
-								urasuunnitelman
-								kirkastamista ja mahdollisuus hankitun osaamisen tunnistamiseen.</p> -->
-						<p class="sub"></p>
-					</div>
-				</div>
-		</section>
-		<section id="gtco-our-team" data-section="our-team">
-			<h2 style="text-align: center;">VASTAAVA HENKILÖSTÖ</h2><br><br>
-			<div class="row team-item gtco-team-reverse">
-				<div class="col-md-8 col-md-push-2 animate-box" data-animate-effect="fadeInRight">
-					<div class="img-shadow">
-						<img src="images/tuomas kopio.jpg" class="img-responsive" alt="Tuomaksen kuva"
-							style="width:20vw">
-					</div>
-				</div>
-				<div class="col-md-4  col-md-pull-5 animate-box" data-animate-effect="fadeInRight">
-					<h2>Tuomas Puro</h2>
-					<p>Yli kahdenkymmenen vuoden kokemus koodaamisesta ja it-teknologioista.
-						IT-alan opettajana ollut yli kymmenen vuotta. Opettajan työssä pyrin
-						toteuttamaan opetusta työelämä- ja opiskelijalähtöisesti.
-						Motto: No mistakes, just happy accidents.</p>
-					<p>Tuomas Puro, Esedu, <a href="tel:+35844 711 5903">044 711 5903</a>, tuomas.puro@esedu.fi</p>
-				</div>
-			</div>
-
-			<div class="row team-item gtco-team">
-				<div class="col-md-8 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-					<div class="img-shadow">
-						<img src="images/salla_gummerus kopio.jpg" class="img-responsive" alt="Salla Gummerus"
-							style="width:20vw">
-					</div>
-				</div>
-				<div class="col-md-4 col-md-pull-2 animate-box" data-animate-effect="fadeInLeft">
-					<h2>Salla Gummerus</h2>
-					<p>Olen saanut olla mukana alusta asti ideoimassa ja toteuttamassa DigiMuuntamoa. Minua
-						innostaa rohkeat kokeilut ja yhdessä tekeminen.
-						Haluan olla mukana mahdollistamassa koulutusta, jossa jokaisen on mahdollista löytää
-						omat innostuksen aiheet ja haastaa itseään oppimaan lisää.
-						Olen taustaltani ammatillinen opettaja, yrittäjä ja uravalmentaja.</p>
-					<p>Salla Gummerus, KasvuKehittäjä, KasvuEsedu, <a href="tel:+35840 513 6032">040 513 6032</a>,
-						salla.gummerus@esedu.fi</p>
-				</div>
-			</div>
-			<div class="row team-item gtco-team-reverse">
-				<div class="col-md-8 col-md-push-2 animate-box" data-animate-effect="fadeInRight">
-					<div class="img-shadow">
-						<img src="images/Joacim.jpg" class="img-responsive" alt="Joacim Rönn" style="width:20vw">
-					</div>
-				</div>
-				<div class="col-md-4  col-md-pull-5 animate-box" data-animate-effect="fadeInRight">
-					<h2>Joacim Rönn</h2>
-					<p>Taustaltani olen järjestelmäasiantuntija, viimeiset 20+ vuotta olen kouluttanut,
-						auttanut ja korjannut mac, win sekä linuxin koneita ja palvelimia. KasvuEsedulla
-						koulutan sisällöntuotanto puolelta kuvankäsittelyä sekä videoeditointia. Myös
-						HTML/CSS ja Worpress osaaminen ovat vahvuuksiani. Harrastuksena lennän itse kasaamia
-						FPV-droneja sekä yhtä kaupallista DJI dronea.
-
-					</p>
-					<p>Joacim Rönn, Kouluttaja, KasvuEsedu, joacim.ronn@esedu.fi</p>
-				</div>
-			</div>
-
-			<div class="row team-item gtco-team">
-				<div class="col-md-8 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-					<div class="img-shadow">
-						<img src="images/aki_helenius kopio.jpg" class="img-responsive" alt="Akin Helenius"
-							style="width:20vw">
-					</div>
-				</div>
-				<div class="col-md-4 col-md-pull-2 animate-box" data-animate-effect="fadeInLeft">
-					<h2>Aki Helenius</h2>
-					<p>Tieto ja- viestintätekniikan taitovalmentaja vuodesta 2019. Koulutus ICT-asentaja ja
-						Datanomi. Pidän työstäni opiskelijoiden parissa.</p>
-					<p>Aki Helenius, Esedu, <a href="tel:+35840 688 6619">040 688 6619</a>, aki.helenius@esedu.fi</p>
-				</div>
-			</div>
-			<div class="row team-item gtco-team-reverse">
-				<div class="col-md-8 col-md-push-2 animate-box" data-animate-effect="fadeInRight">
-					<div class="img-shadow">
-						<img src="images/timo_hakkinen_kopio.jpg" class="img-responsive" alt="Timon kuva"
-							style="width:20vw">
-					</div>
-				</div>
-				<div class="col-md-4  col-md-pull-5 animate-box" data-animate-effect="fadeInRight">
-					<h2>Timo Häkkinen</h2>
-					<p>Esedun uraohjaaja Timo Häkkinen. Työskentelen Esedulla hankeyksikössä yhdettätoista
-						vuotta ja teen uraohjaajan ja ohjaamo olkkarin opon työtä. 3 lapsen isä ja baikkeri.
-						Ajan harrikalla ja asun Rantakylässä. Teen myös sivutoimisesti maankaivuutöitä
-						pikkukaivurillani
-					</p>
-					<p>Timo Häkkinen, Esedu, <a href="tel:+35844 711 5718">044 711 5718</a>, timo.hakkinen@esedu.fi</p>
-				</div>
-			</div>
-
-			<div class="row team-item gtco-team heading">
-				<div class="col-md-8 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-					<div class="img-shadow">
-						<img src="images/hermanni kopio.jpg" class="img-responsive" alt="Hermannin kuva"
-							style="width:20vw">
-					</div>
-				</div>
-				<div class="col-md-4 col-md-pull-2 animate-box" data-animate-effect="fadeInLeft">
-					<h2>Hermanni Saresma</h2>
-					<p>Opettajana vuodesta 2011. Verkot ja laitteet ominta osaamista,
-						mutta kiinnostusta löytyy myös sisällöntuotantoon. Pidän
-						käytännön työskentelystä ja ideoiden sparraamisesta opiskelijoiden kanssa.
-					</p>
-					<p>Hermanni Saresma, Esedu, <a href="tel:+35850 389 1260">050 389 1260</a>,
-						hermanni.saresma@esedu.fi</p>
-
-				</div>
-			</div>
-	</div>
-	</div>
-	<div id="script" class="hidden-xs hidden-sm">
-		<div class="heading animate-box col-md-10 col-md-offset-2">
-			<p class="subtle-text animate-box" data-animate-effect="fadeIn">JAVA-SCRIPT</p>
-		</div>
-	</div>
-	</section>
-	<section id="some" data-section="some">
-		<div class="container">
-			<div class="row">
-				<div class="heading animate-box col-md-6">
-					<h2>TARJOA MEILLE PROJEKTEJA</h2>
-					Digimuuntamon koulutuksissa opiskellaan uudenlaisessa oppimisympäristössä, mikä tapahtuu oikeiden
-					projektien kautta. Olisiko sinulla tarjota meille tosielämän projektia?
-					Projektit voivat olla laajuudeltaan erilaisia ja ne tulisi liittyä verkkosivujen toteutukseen,
-					sisällöntuotantoon, videokuvaamiseen tai -editointiin.
-					Mikäli sinulla voisi olla projekti meidän tarpeisiimme, niin ota yhteyttä ja katsotaan miten
-					projekti soveltuu opiskeliljaprojektiksi.<br><br>
-					Kouluttaja Joacim Rönn<br>
-					joacim.ronn@esedu.fi<br>
-					<img alt="Projekti_kuva" src="images/Projekti.png" width="50%" class="center" />
-				</div>
-				<div class="heading animate-box col-md-6">
-					<h2>SEURAA PROJEKTEJAMME SOMESSA</h2>
-					<div id="fb-root"></div>
-					<script async defer crossorigin="anonymous"
-						src="https://connect.facebook.net/fi_FI/sdk.js#xfbml=1&version=v8.0" nonce="Ri75XfYS"></script>
-					<div class="fb-page" data-href="https://www.facebook.com/digimuuntamo" data-tabs="timeline"
-						data-width="500" data-height="" data-small-header="false" data-adapt-container-width="true"
-						data-hide-cover="false" data-show-facepile="true">
-						<blockquote cite="https://www.facebook.com/digimuuntamo" class="fb-xfbml-parse-ignore"><a
-								href="https://www.facebook.com/digimuuntamo">Digimuuntamo</a></blockquote>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="gtco-testimonials" data-section="projektit" id="projektit">
-		<div>
-			<h2>ESIMERKKEJÄ PROJEKTEISTA</h2>
-			<div class="owl-carousel owl-carousel1 owl-theme">
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/Moottorilapio_logo.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>MOOTTORILAPIO VERKKOSIVUSTON TOTEUTUS<br />
-							</h5>
-							<p class="card-text" id="kortti">“ Saimme tehtäväksemme suunnitella ja toteuttaa verkkosivut
-								asiakkaalle, joka tekee pienkaivuutöitä moottorilapiolla . Tämä oli ryhmämme jäsenten
-								ensimmäinen WordPress -sivuston toteutus aiheeseen saadun opetuksen jälkeen. Projektista
-								saimme erinomaista oppia ja lisätaitoa sivustojen tekoon. Asiakas oli hyvin tyytyväinen
-								lopputulokseen. ” </p>
-							<h6><a id="linkki" href="http://www.moottorilapio.fi" target="_blank">Vieraile sivustolla
-									moottorilapio.fi</a></h6>
-							<p>Tekijät: Jenna S. Masa S. Mika M.</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/Hyllykuva.jpg"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>KARHULAN TORI APTEEKIN VERKKOSIVUSTON TOTEUTUS<br />
-							</h5>
-							<p class="card-text" id="kortti">“ Asiakkaan suunnasta saimme projektiksi Karhulan tori
-								apteekin verkkosivuston uudistamisen. Suunnittelu ja toteutus on tehty WordPressiä
-								käyttäen. Tämä oli meidän ryhmämme ensimmäinen verkkosivuston toteutus WordPressin
-								avulla. Asiakkaalta saimme positiivista palautetta toteutuksesta. ” </p>
-							<h6><a id="linkki" href="https://karhulanapteekki.fi/" target="_blank">Vieraile sivustolla
-									karhulanapteekki.fi</a></h6>
-							<p>Tekijät: Tommi S. Vladislav D. Kari A.</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>DIGIMUUNTAMON VERKKOSIVUSTON TOTEUTUS<br />
-							</h5>
-							<p class="card-text" id="kortti">“ Tämä kyseinen Digimuuntamon verkkosivu on esimmäisen
-								kerran toteutettu Digimuuntamo 1.0 -koulutuksessa ja sitä on jatkettu Digimuuntamo 2.0
-								-koulutuksessa. Sivusto on toteutettu Bootstrapia hyödyntäen. Sivusto toimii myös
-								harjoitusalustana, jossa koulutukseen osallistuneet pääsevät kokoajan kehittämään sivustoa
-								vaihe vaiheelta. ” </p>
-							<p>Tekijät: Tommi S. Aleksi R. Jenna S. Masa S.</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/Cafesaundi.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>CAFE SAUNDI VERKKOSIVUSTON TOTEUTUS<br />
-							</h5>
-							<p class="card-text" id="kortti">“ Asiakkaan toiveena oli uudistaa lounaskahvilan
-								verkkosivut. Saimme suunnitella ja toteuttaa Cafe Saundin verkkosivut haluamallamme
-								tavalla, päädyimme toteuttamaan sivut WordPressin avulla. Tavoitteena oli myös, että
-								asiakkaan on helppo itse päivittää sivuja halutessaan. Sivustosta tuli nykyaikaisempi ja
-								laadullisesti paremmat kuin aiemmin ja asiakkaalle tuli huomattavasti enemmän lisäarvoa
-								verkkosivuston olemassa olosta. ” </p>
-							<h6><a id="linkki" href="https://it.esedu.fi/~jenna.siitonen/cafesaundi/"
-									target="_blank">Työn alla.</a></h6>
-							<p>Tekijät: Tommi S. Jenna S. Masa S.</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/Kissa.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>VIDEON TOTEUTUS<br />
-							</h5>
-							<p class="card-text" id="kortti">“ Harjoittelin videonkäsittelyohjelma DaVinci Resolvella kuvan liittämistä videoon ja liikeradan käyttöä. ” </p>
-							<h6><a id="linkki" href="https://www.youtube.com/watch?v=Jb3Ms3y5BOI"
-									target="_blank">Katso video</a></h6>
-							<p>Tekijä: Jaana</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/Roskikset.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>KIERRÄTYS PELI<br />
-							</h5>
-							<p class="card-text" id="kortti">“ Saimme Esedun opettajalta pyynnön kehittää kierrätykseen
-								liittyvää peliä, jossa tarkoituksena opettaa oppilaita kierrätykseen. Peli tuli koulun
-								sisäiseen käyttöön. Pääsimme projektissa syventymään JavaScriptin maailmaan. ” </p>
-							<p>Tekijät: Vladislav D. Mika M.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
-	<section class="gtco-testimonials" data-section="kokemuksia">
-		<div>
-			<h2>KOKEMUKSIA KOULUTUKSESTA</h2>
-			<div class="owl-carousel owl-carousel1 owl-theme">
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Tommi <br />
-							</h5>
-							<h6>Digimuuntamo 1.0 & 2.0</h6>
-							<p class="card-text">“ Olen oppinut paljon unohdettuja entisiä oppeja ja vielä enemmän
-								uutta! Olemme päässeet tekemään myös oikeita työelämäprojekteja.
-								Opiskelu on ollut mukavaa mukavassa tiimissä. Suosittelen digimuuntamoa kaikille, ja
-								aion jatkaa digimuuntamon seuraavalle kurssille. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Joacim<br />
-							</h5>
-							<h6>Digimuuntamo 1.0 & 2.0</h6>
-							<p class="card-text">“ Kokemus on ollut erilainen kuin aluksi oletin. Todella mukava tapa
-								opiskella. Tiimityöskentely on ollut mukavaa, ja olenkin oppinut paljon tiimityöstä. ”
-							</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Olli<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ En olisi uskonut että jonakin päivänä osaan koodata omat nettisivut
-								ja
-								paljon muuta. Kiitos Digimuuntamo! ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Aleksi<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Päässyt kokeilemaan heti käytännössä, mikä on auttanut
-								havainnollistamaan
-								mistä on kysymys. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Jenna S.<br />
-							</h5>
-							<h6>Digimuuntamo 1.0 & 2.0</h6>
-							<p class="card-text">“ Mukava tapa opiskella mukavassa porukassa. Aitojen työelämäprojektien
-								kautta päässyt tekemään mielenkiintoisia juttuja
-								ja oppinut paljon uutta.”
-							</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Masa<br />
-							</h5>
-							<h6>Digimuuntamo 2.0</h6>
-							<p class="card-text">“ Koulutus antanut enemmän mitä osasin odottaa. Aiempaa tietotaitoa
-								pääsi syventämään oman kiinnostuksen mukaan.
-								Uudenlainen oppimismuoto on nykypäivää ja mukailee hyvin paljon työelämää. Erittäin
-								positiivinen kokemus. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Mika<br />
-							</h5>
-							<h6>Digimuuntamo 2.0</h6>
-							<p class="card-text">“ Parasta antia ovat olleet wordpress (web sivujen
-								kehitys) ja javascript ohjelmointi, unohtamatta HTML/CSS säätöä, sisällöntuotantoa
-								(kuvien
-								käsittely). ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Kari<br />
-							</h5>
-							<h6>Digimuuntamo 2.0</h6>
-							<p class="card-text">“ Olen saanut treenattua vanhoja taitoja ja oppinut uutta. Porukka on
-								mukavaa ja läppä välillä lentää.
-								Itselleni on ollut hyvä nettisivujen teon ja videoeditoinnin kertaus uusilla ohjelmilla.
-								Jees. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Vladislav<br />
-							</h5>
-							<h6>Digimuuntamo 2.0</h6>
-							<p class="card-text">“ Olen tyytyväinen koulutukseen. Olen osallistunut pariin projektiin ja
-								näen valmista tulosta minun osaamisesta. Olen tutustunut uuteen ohjelmointikieleen mistä
-								nyt tykkään.
-								Opiskelijaporukassa toimiminen oli edullista. Koulutus on hyvä! ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Jani T.<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Todella hieno koulutus. Paljon uutta olen oppinut. Jotain tällaista
-								kurssia olen tarvinnut jo pitemmän aikaa. Toivottavasti jatkoa on luvassa. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Simo<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Olen oppinut paljon uutta, josta tulee olemaan suuri hyöty alallani
-								markkinoinnin ja palveluiden kehittämisen parissa. Suosittelen kaikille oman
-								ammattitaidon kehittämiseksi, koska tietoa koodaamisesta ja nettisivujen tekemisestä
-								tarvitaan alalla kuin alalla nykypäivänä. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Jani K.<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Vanhojen css ja html taitojen päivittämistä sekä uutena python ja
-								javascriptin opettelua. Oppinut paljon uutta ja kaiken kaikkiaan positiivinen kokemus. ”
-							</p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Petteri<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Digimuuntamo kurssi on ollut hyödyllinen vanhojen taitojen
-								päivittämiseen. Projektit myös antavat mahdollisuuden kartuttaa portfoliota. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Jenna P.<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Koulutus on antanut mahdollisuuden oppia paljon uusia asioita.
-								Tehtävät ovat olleet monipuolisia ja opiskelu on ollut rentoa. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Pyry<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Koulutus mahdollistaa projektityöskentelyn ja itsensä kehittämisen.
-								Työtilat ovat laadukkaat ja oppimateriaali monipuolista. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Sari<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Koulutus on mahdollista suorittaa etänä joka on minulle todella hyvä
-								etu, koska pystyn kotona luomaan sellaisen tilan jossa kykenen keskittymään ja
-								työskentelemään rauhassa.
-								Tehtävien ollessa haastavia, olen saanut pyytäessä kertausta ja apua, sekä uraohjaus on
-								tuntunut mukavalta. Tästä on hyvä jatkaa eteenpäin elämässä. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Kalle<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Koulutuksessa on päässyt hyvin kertaamaan jo opittuja taitoja sekä
-								kokemaan millaista on olla osana projektitiimiä. Olen myös päässyt uusien haasteiden
-								äärelle koulutuksen aikana esim. uuden ohjelmointikielen pariin. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Miika<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Koulutus on ollut kokonaisuudessaan hyvin mielenkiintoinen. Olen
-								saanut paljon uutta tietoa koodaamisesta sekä eri ohjelmista esim. videonmuokkauksesta.
-								Projektien monipuolisuus on erittäin inspiroivaa! ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Jaana<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Koulutus on ollut tiivistahtinen ja paljon on saanut oppia uutta ja
-								samalla päivittää jo aiempaa osaamistaan nykypäivään. Opiskelua on saanut tehdä myös
-								omaan tahtiin ja omiin mielenkiinnon kohteisiin painottuen, josta iso plussa. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Antti<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Oppinut käyttämään uusia ohjelmia ja ohjelmointitekniikoita. On ollut
-								sopivan haastava ja rento meininki. ” </p>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="card text-center"><img class="card-img-top" src="images/digimuuntamo_at.png"
-							alt="digimuuntamo_logo">
-						<div class="card-body"><br>
-							<h5>Mirka<br />
-							</h5>
-							<h6>Digimuuntamo 1.0</h6>
-							<p class="card-text">“ Koulutus antoi hyvän mahdollisuuden päästä palauttamaan mieleen
-								aiempia oppeja, jotka olivat päässeet unohtumaan käytön puutteen vuoksi. Uuden oppimista
-								pääsi myös syntymään. Nyt koulutuksen myötä uudella innolla jatkamaan kehittymistä
-								tietotekniikan parissa. ” </p>
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
-
-
-	<!-- <section id="gtco-practice-areas" data-section="digimuuntamo">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 heading animate-box">
-					<p class="subtle-text animate-box" data-animate-effect="fadeIn">JAVA-<span>SCRIPT</span></p>
-
-					<h1>Kokemuksia koulutuksesta</h1>
-				</div>
-				<div class="col-md-6">
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/digimuuntamo_at.png" alt="Digimuuntamo logo">
-						</div>
-						<div class="gtco-copy">
-							<h3>Tommi</h3>
-							<p>Olen oppinut paljon unohdettuja entisiä oppeja ja vielä enemmän uutta! Opiskelu on ollut
-								mukavaa mukavassa tiimissä. Suosittelen digimuuntamoa kaikille, ja aion jatkaa
-								digimuuntamon seuraavalle kurssille.</p>
-						</div>
-					</div>
-
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/digimuuntamo_at.png" alt="Digimuuntamo logo">
-						</div>
-						<div class="gtco-copy">
-							<h3>Olli</h3>
-							<p>En olisi uskonut että jonakin päivänä osaan koodata omat nettisivut ja paljon muuta.
-								Kiitos Digimuuntamo!</p>
-						</div>
-					</div>
-
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/digimuuntamo_at.png" alt="Digimuuntamo logo">
-						</div>
-						<div class="gtco-copy">
-							<h3>Jenna</h3>
-							<p>Minulle uusi, erilainen tapa opiskella, mutta olen tykännyt ja oppinut paljon uutta.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/digimuuntamo_at.png" alt="Digimuuntamo logo">
-						</div>
-						<div class="gtco-copy">
-							<h3>Joacim</h3>
-							<p>Kokemus on ollut erilainen kuin aluksi oletin. Todella mukava tapa opiskella.
-								Tiimityöskentely on ollut mukavaa, ja olenkin oppinut paljon tiimityöstä.</p>
-						</div>
-					</div>
-
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/digimuuntamo_at.png" alt="Digimuuntamo logo">
-						</div>
-						<div class="gtco-copy">
-							<h3>Aleksi</h3>
-							<p>Päässyt kokeilemaan heti käytännössä, mikä on auttanut havainnollistamaan mistä on
-								kysymys.</p>
-						</div>
-					</div>
-
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/digimuuntamo_at.png" alt="Digimuuntamo logo">
-						</div>
-						<div class="gtco-copy">
-							<h3></h3>
-							<p></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
-
-
-	<footer id="gtco-footer" role="contentinfo">
-		<div class="container">
-
-			<div class="copyright">
-				<div class="d-flex justify-content-between">
-					<div id="footer-text" class="col-md-8">
-						<p>
-							<small class="block">&copy; 2022 Kasvu Esedu All Rights Reserved.</small>
-							<small class="block">Designed by Digimuuntamo</small>
-						</p>
-					</div>
-					<div class="col-md-4 col-md-push-2">
-
-						<ul class="gtco-social-icons">
-							<!-- <li><a href="#"><i class="icon-twitter"></i></a></li> -->
-							<h4>SEURAA MEITÄ SOMESSA</h4><br>
-							<li><a href="https://www.facebook.com/digimuuntamo" aria-label="facebook"><i
-										class="icon-facebook"></i></a></li>
-							<li><a href="https://www.instagram.com/digimuuntamo/" aria-label="instagram"><i
-										class="icon-instagram"></i></a></li>
-							<!-- <li><a href="#" aria-label="linkedin"><i class="icon-linkedin"></i></a></li> -->
-							<br><img src="images/logoKasvuEsedu.png" alt="KasvuEsedu logo" width="50%">
-							<!-- <li><a href="#"><i class="icon-dribbble"></i></a></li> -->
-						</ul>
-
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</footer>
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop" alt="Takaisin ylös" aria-label="Ylös"><i class="icon-arrow-up"></i></a>
-	</div>
-
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
-	<!-- Main -->
-	<script src="js/main.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/karuselli.js"></script>
 </body>
-
 </html>
